@@ -1,24 +1,29 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = 'flatiron-angular';
-  disableNewMessage = true;
-  isActive = false;
+  senderName = "";
+  senderMessage = "";
+
+  athlete = "";
+  sport = ""
+  status = ""
+  title = "flatiron-angular";
   messages = [
     {
       sender: "Ludovic",
-      message: "Latest message from Ludovic"
+      message: "Latest message from Ludovic",
     },
     {
       sender: "Jessica",
-      message: "Latest message from Jessica"
-    }
-  ]
+      message: "Latest message from Jessica",
+    },
+  ];
+
   athletes = [
     {
       athlete: "Bill Russel",
@@ -36,21 +41,25 @@ export class AppComponent {
       status: "is active"
     }
   ]
-  getDisableNewMessage(){
-    return this.disableNewMessage
-  }
-  onSendMessage() {
-    let message = {
-      sender: "Michael",
-      message: "New message from Michael"
-    }
-    this.messages.push(message);
-  }
   constructor() {
     console.log("Iniating angular AppCompnent class");
-    setTimeout(() => {
-      this.disableNewMessage = !this.disableNewMessage;
-    }
-    , 2000)
+  }
+
+  onSendMessage() {
+    let newMessage = {
+      sender: this.senderName,
+      message: this.senderMessage,
+    };
+    this.messages.push(newMessage);
+  }
+
+  onAdd() {
+    let newAthlete = {
+      athlete: this.athlete,
+      sport: this.sport,
+      status: this.status
+
+    };
+    this.athletes.push(newAthlete);
   }
 }

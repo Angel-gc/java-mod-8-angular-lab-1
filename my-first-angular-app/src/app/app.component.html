@@ -1,21 +1,32 @@
-Enter name of the application: <input type="text" [(ngModel)]="title" />
-<p>My Application is {{ title }}</p>
-<p>Number of messages = {{ messages.length}}</p>
-
 <div>
-  <button [disabled]="getDisableNewMessage()" (click)="onSendMessage()">
-    Send Message
-  </button>
+  <h1>Chat Application</h1>
+  <h2>Send Message</h2>
+  <p>Sender name: <input type="text" [(ngModel)]="senderName" /></p>
+  <p>Message: <input type="text" [(ngModel)]="senderMessage" /></p>
+  <div>
+    <button (click)="onSendMessage()">Send Message</button>
+  </div>
+
+  <h2>Messages</h2>
+  <div>
+    <ul>
+      <li *ngFor="let currentMessage of messages">
+        {{currentMessage.sender}}: {{currentMessage.message}}
+      </li>
+    </ul>
+  </div>
 </div>
 
-<p>First message is from {{messages[0].sender}}: {{messages[0].message}}</p>
-<div>
-  <ul>
-    <li *ngFor="let currentMessage of messages">
-      {{currentMessage.sender}}: {{currentMessage.message}}
-    </li>
-  </ul>
-</div>
+<h2>Add Athlete</h2>
+  <p>Athlete name: <input type="text" [(ngModel)]="athlete" /></p>
+  <p>Sport: <input type="text" [(ngModel)]="sport" /></p>
+  <p>Status: <input type="text" [(ngModel)]="status" /></p>
+
+  <div>
+    <button (click)="onAdd()">Add athlete</button>
+  </div>
+
+<h2>Athletes</h2>
 <div>
   <ul>
     <li *ngFor="let currentAthlete of athletes">
